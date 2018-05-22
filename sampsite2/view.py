@@ -9,22 +9,28 @@ from rest_framework.response import Response
 
 import random
 
+from polls.models import Dane
+
 User = get_user_model()
+
 
 def hello_world(requset):
     return HttpResponse("Hello world")
 
+
 def root_page(request):
     return HttpResponse("Root home page")
 
+
 def random_number(request, max_rand=100):
-    random_num = random.randrange(0,int(max_rand))
-    msg = "random number between 0 and %s : %d "% (max_rand,random_num)
+    random_num = random.randrange(0, int(max_rand))
+    msg = "random number between 0 and %s : %d " % (max_rand, random_num)
     return HttpResponse(msg)
+
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'charts.html', {"customers":10})
+        return render(request, 'charts.html', {"customers": 10})
 
 
 def get_data(request, *args, **kwargs):
@@ -32,7 +38,8 @@ def get_data(request, *args, **kwargs):
         "sales": 100,
         "customers": 10,
     }
-    return JsonResponse(data) # http response
+    return JsonResponse(data)  # http response
+
 
 class ChartData(APIView):
     authentication_classes = []
@@ -40,8 +47,10 @@ class ChartData(APIView):
 
     def get(self, request, format=None):
         qs_count = User.objects.all().count()
-        labels = ["Users","Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        default_item = [qs_count, 123,12,43,23,3]
+        all_entries = Dane.objects.all()
+        #zmienna = Dane.objects.filter(rok=2016)
+        labels = ["Rok", "Przychody", "Zysk brutto", "Dzialalnosc operacyjna", "Dzialalnosc finansowa", "Zysk netto"]
+        default_item = [123,123,223]
         data = {
             "labels": labels,
             "default": default_item,
