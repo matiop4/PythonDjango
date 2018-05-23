@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data form</title>
+</head>
+<body>
+
+<h1>Create/Update data</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Save</button>
+</form>
+<p>
+    {% if data %}
+        <button>
+            <a href="{% url 'delete_datas' data.id %}">Usuń</a>
+        </button>
+    {% endif %}
+</p>
+
+</body>
+</html>

@@ -46,11 +46,13 @@ class ChartData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        qs_count = User.objects.all().count()
-        all_entries = Dane.objects.all()
-        #zmienna = Dane.objects.filter(rok=2016)
+        #qs_count = User.objects.all().count()
+        #all_entries = Dane.objects.all()
+        #dane = Dane.objects.all()
+        #rok = Dane.objects.get(id=1)
+        #przychody = Dane.objects.values('przychody')
         labels = ["Rok", "Przychody", "Zysk brutto", "Dzialalnosc operacyjna", "Dzialalnosc finansowa", "Zysk netto"]
-        default_item = [123,123,223]
+        default_item = [123]
         data = {
             "labels": labels,
             "default": default_item,

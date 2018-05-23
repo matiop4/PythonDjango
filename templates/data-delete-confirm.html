@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data delete</title>
+</head>
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    <h2>Czy napewno chcesz usunąć dane?'{{ data.rok }}' ?</h2>
+    <button type="submit">Confirm</button>
+</form>
+
+</body>
+</html>

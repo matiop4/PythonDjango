@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data</title>
+</head>
+<body>
+
+<ul>
+    {% for data in datas %}
+        <a href="{% url 'update_datas' data.id %}">
+            <li> {{ data.rok }} </li>
+        </a>
+    {% endfor %}
+</ul>
+
+<button>
+<a href="{% url 'create_datas' %}">Add new data</a>
+</button>
+
+</body>
+</html>
