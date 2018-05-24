@@ -145,6 +145,11 @@
     <div class='row'>
         <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
             <h1>Hello World</h1>
+            <div>
+                <button>
+                    <a href="{% url 'dodanie_danych' %}">Dodaj dane</a>
+                </button>
+            </div>
             <div class='col-sm-6'>
                 <canvas id="myChart" width="400" height="400"></canvas>
             </div>

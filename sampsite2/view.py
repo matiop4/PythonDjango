@@ -22,6 +22,10 @@ def root_page(request):
     return HttpResponse("Root home page")
 
 
+def dodanie_danych(request):
+    return render(request, 'datas.html')
+
+
 def random_number(request, max_rand=100):
     random_num = random.randrange(0, int(max_rand))
     msg = "random number between 0 and %s : %d " % (max_rand, random_num)
@@ -50,8 +54,8 @@ class ChartData(APIView):
         # dane = Dane.objects.all()
         lata = [Dane.objects.all()[0].rok, Dane.objects.all()[1].rok, Dane.objects.all()[2].rok, Dane.objects.all()[3].rok]
         przychody = [Dane.objects.all()[0].przychody, Dane.objects.all()[1].przychody, Dane.objects.all()[2].przychody, Dane.objects.all()[3].przychody]
-        #zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
-        #labels = ["Przychody", "Zysk brutto", "Dzialalnosc operacyjna", "Dzialalnosc finansowa", "Zysk netto"]
+        # zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
+        # labels = ["Przychody", "Zysk brutto", "Dzialalnosc operacyjna", "Dzialalnosc finansowa", "Zysk netto"]
         data = {
             "labels": lata,
             "default": przychody,
