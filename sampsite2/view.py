@@ -54,6 +54,7 @@ class ChartData(APIView):
         # dane = Dane.objects.all()
         lata = [Dane.objects.all()[0].rok, Dane.objects.all()[1].rok, Dane.objects.all()[2].rok, Dane.objects.all()[3].rok]
         przychody = [Dane.objects.all()[0].przychody, Dane.objects.all()[1].przychody, Dane.objects.all()[2].przychody, Dane.objects.all()[3].przychody]
+        kumulacj
         # zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
         # labels = ["Przychody", "Zysk brutto", "Dzialalnosc operacyjna", "Dzialalnosc finansowa", "Zysk netto"]
         data = {
