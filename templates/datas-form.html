@@ -1,26 +1,71 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Data form</title>
     {% include 'base/css.html' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
 
-<h1>Create/Update data</h1>
+<!-- header-wrap -->
+<div id="header-wrap">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Strona startowa</a></li>
+                <li><a href="{% url 'home' %}#services">Wykresy</a></li>
+                <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Save</button>
-</form>
-<p>
-    {% if data %}
-        <button>
-            <a href="{% url 'delete_datas' data.id %}">Usuń</a>
-        </button>
-    {% endif %}
-</p>
+            </ul>
+        </nav>
+
+    </header>
+</div>
+
+<!-- content-wrap -->
+<div class="content-wrap">
+
+    <!-- main -->
+
+    <section id="services">
+
+        <h1>Dodawanie danych</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <br>
+            <button type="submit">Zapisz</button>
+        </form>
+        <br>
+        <p>
+            {% if data %}
+                <button>
+                    <a href="{% url 'delete_datas' data.id %}">Usuń</a>
+                </button>
+            {% endif %}
+        </p>
+
+    </section>
+
+
+</div>
+
+<!-- footer -->
+<footer>
+    <div class="footer-content">
+        <ul class="footer-menu">
+            <li><a href="{% url 'home' %}">Strona startowa</a></li>
+            <li><a href="{% url 'home' %}#services">Wykresy</a></li>
+            <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+        </ul>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>

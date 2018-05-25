@@ -142,22 +142,100 @@
 
 {% block content %}
 
-    <div class='row'>
-        <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
-            <h1>Hello World</h1>
-            <div>
-                <button>
-                    <a href="{% url 'dodanie_danych' %}">Dodaj dane</a>
-                </button>
-            </div>
-            <div class='col-sm-6'>
-                <canvas id="myChart" width="400" height="400"></canvas>
-            </div>
-            <div class='col-sm-6'>
-                <canvas id="myChart2" width="400" height="400"></canvas>
+    <!-- header-wrap -->
+    <div id="header-wrap">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#main">Strona startowa</a></li>
+                    <li><a href="#services">Wykresy</a></li>
+                    <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+
+    <!-- content-wrap -->
+    <div class="content-wrap">
+
+        <!-- main -->
+        <section id="main">
+
+            <h1>Witaj!</h1>
+
+            <p class="intro">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+
+            <div class="row no-bottom-margin">
+
+                <section class="col">
+                    <h2>Creative Ideas</h2>
+
+                    <p>Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
+                        acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
+                        cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
+                </section>
+                <section class="col mid">
+                    <h2>Innovation</h2>
+
+                    <p>Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
+                        Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
+                        gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
+                        Phasellus vulputate.</p>
+                </section>
+
+                <section class="col">
+                    <h2>Design and Development</h2>
+
+                    <p>In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
+                        Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Sed commodo ligula blandit risus.</p>
+                </section>
             </div>
 
-        </div>
+            <a class="back-to-top" href="#main">Back</a>
+
+        </section>
+
+        <!-- services -->
+        <section id="services">
+
+            <h1>Wykresy</h1>
+            <div class='row'>
+                <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
+                    <div class='col-sm-6'>
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class='col-sm-6'>
+                        <canvas id="myChart2" width="400" height="400"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <a class="back-to-top" href="#main">Back</a>
+
+        </section>
+
+
     </div>
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-menu">
+                <li><a href="#main">Strona startowa</a></li>
+                <li><a href="#services">Wykresy</a></li>
+                <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+            </ul>
+
+        </div>
+
+    </footer>
 
 {% endblock content %}
