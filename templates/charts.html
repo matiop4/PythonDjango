@@ -4,7 +4,10 @@
     {% block jquery %}
         var endpoint = '/api/chart/data/'
         var defaultData = []
-        var wszytko = []
+        var wszytko2015 = []
+        var wszytko2014 = []
+        var wszytko2013 = []
+        var wszytko2012 = []
         var labels = []
         var wszystko2 = []
         $.ajax({
@@ -13,7 +16,10 @@
             success: function (data) {
                 labels = data.labels
                 defaultData = data.default
-                wszytko = data.all
+                wszytko2015 = data.all2015
+                wszytko2014 = data.all2014
+                wszytko2013 = data.all2013
+                wszytko2012 = data.all2012
                 wszytko2 = data.allLabels
                 setChart()
 
@@ -28,6 +34,9 @@
             var ctx = document.getElementById("myChart");
             var ctx2 = document.getElementById("myChart2");
             var ctx3 = document.getElementById("myDoughnutChart");
+            var ctx2014 = document.getElementById("myDoughnutChart2014");
+            var ctx2013 = document.getElementById("myDoughnutChart2013");
+            var ctx2012 = document.getElementById("myDoughnutChart2012");
             var myChart = new Chart(ctx2, {
                 type: 'line',
                 data: {
@@ -100,36 +109,6 @@
                     }
                 }
             })
-            var myDoughnutChart = new Chart(ctx3, {
-                    type: 'doughnut',
-
-                    data: {
-                        labels: wszytko2,
-                        datasets: [{
-                            label: 'Przychody',
-                            data: wszytko,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(0, 153, 0, 0.3)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    }
-                }
-            )
-
 
         }
 
@@ -184,8 +163,9 @@
             <nav>
                 <ul>
                     <li><a href="#main">Strona startowa</a></li>
-                    <li><a href="#services">Wykresy</a></li>
+                    <li><a href="{% url 'home' %}#services">Wykresy</a></li>
                     <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+                    <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
 
                 </ul>
             </nav>
@@ -205,7 +185,8 @@
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum."</p>
 
 
             <div class="row no-bottom-margin">
@@ -253,10 +234,6 @@
                     </div>
 
                 </div>
-            </div>
-
-            <div class='col-sm-6' style ="margin-top: 200px; margin-bottom: 50px">
-                <canvas id="myDoughnutChart" width="400" height="400"></canvas>
             </div>
 
 

@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+<script>
+    {% block jquery %}
+        var endpoint = '/api/chart/data/'
+        var defaultData = []
+        var wszytko2015 = []
+        var wszytko2014 = []
+        var wszytko2013 = []
+        var wszytko2012 = []
+        var labels = []
+        var wszystko2 = []
+        $.ajax({
+            method: "GET",
+            url: endpoint,
+            success: function (data) {
+                labels = data.labels
+                defaultData = data.default
+                wszytko2015 = data.all2015
+                wszytko2014 = data.all2014
+                wszytko2013 = data.all2013
+                wszytko2012 = data.all2012
+                wszytko2 = data.allLabels
+                setChart()
+
+            },
+            error: function (error_data) {
+                console.log("error")
+                console.log(error_data)
+            }
+        })
+
+        function setChart() {
+
+            var ctx3 = document.getElementById("myDoughnutChart");
+            var ctx2014 = document.getElementById("myDoughnutChart2014");
+            var ctx2013 = document.getElementById("myDoughnutChart2013");
+            var ctx2012 = document.getElementById("myDoughnutChart2012");
+
+            var myDoughnutChart = new Chart(ctx3, {
+                    type: 'doughnut',
+
+                    data: {
+                        labels: wszytko2,
+                        datasets: [{
+                            label: 'Przychody',
+                            data: wszytko2015,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(0, 153, 0, 0.3)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                }
+            )
+            var myDoughnutChart2014 = new Chart(ctx2014, {
+                    type: 'doughnut',
+
+                    data: {
+                        labels: wszytko2,
+                        datasets: [{
+                            label: 'Przychody',
+                            data: wszytko2014,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(0, 153, 0, 0.3)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                }
+            )
+    var myDoughnutChart2013 = new Chart(ctx2013, {
+                    type: 'doughnut',
+
+                    data: {
+                        labels: wszytko2,
+                        datasets: [{
+                            label: 'Przychody',
+                            data: wszytko2013,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(0, 153, 0, 0.3)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                }
+            )
+    var myDoughnutChart2012 = new Chart(ctx2012, {
+                    type: 'doughnut',
+
+                    data: {
+                        labels: wszytko2,
+                        datasets: [{
+                            label: 'Przychody',
+                            data: wszytko2014,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(0, 153, 0, 0.3)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    }
+                }
+            )
+        }
+
+
+
+    {% endblock %}
+</script>
+{% block content %}
+
+    <!-- header-wrap -->
+    <div id="header-wrap">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Strona startowa</a></li>
+                    <li><a href="#services">Wykresy</a></li>
+                    <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+                    <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
+
+                </ul>
+            </nav>
+
+        </header>
+    </div>
+
+    <!-- content-wrap -->
+    <div class="content-wrap">
+
+
+        <!-- services -->
+        <section id="services">
+
+            <h1>Wykresy</h1>
+
+            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
+                2015
+                <canvas id="myDoughnutChart" width="400" height="400"></canvas>
+            </div>
+            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
+                2014
+                <canvas id="myDoughnutChart2014" width="400" height="400"></canvas>
+            </div>
+            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
+                2013
+                <canvas id="myDoughnutChart2013" width="400" height="400"></canvas>
+            </div>
+            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
+                2012
+                <canvas id="myDoughnutChart2012" width="400" height="400"></canvas>
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+
+
+{% endblock content %}
