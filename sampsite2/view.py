@@ -53,9 +53,11 @@ class ChartData(APIView):
 
     def get(self, request, format=None):
         # qs_count = User.objects.all().count()
-        # dane = Dane.objects.all()
+        dane1 = Dane.objects.all()
+        print(dane1)
         lata = [Dane.objects.all()[0].rok, Dane.objects.all()[1].rok, Dane.objects.all()[2].rok, Dane.objects.all()[3].rok]
         przychody = [Dane.objects.all()[0].przychody, Dane.objects.all()[1].przychody, Dane.objects.all()[2].przychody, Dane.objects.all()[3].przychody]
+        zysk_netto = [Dane.objects.all()[0].zysk_netto, Dane.objects.all()[1].zysk_netto, Dane.objects.all()[2].zysk_netto, Dane.objects.all()[3].zysk_netto]
         kumulacja2015 = [Dane.objects.all()[3].przychody,Dane.objects.all()[3].zysk_brutto,Dane.objects.all()[3].dzialalnosc_finansowa,Dane.objects.all()[3].zysk_netto,Dane.objects.all()[3].dzialalnosc_operacyjna]
         kumulacja2014 = [Dane.objects.all()[2].przychody,Dane.objects.all()[2].zysk_brutto,Dane.objects.all()[2].dzialalnosc_finansowa,Dane.objects.all()[2].zysk_netto,Dane.objects.all()[2].dzialalnosc_operacyjna]
         kumulacja2013 = [Dane.objects.all()[1].przychody,Dane.objects.all()[1].zysk_brutto,Dane.objects.all()[1].dzialalnosc_finansowa,Dane.objects.all()[1].zysk_netto,Dane.objects.all()[1].dzialalnosc_operacyjna]
@@ -69,6 +71,7 @@ class ChartData(APIView):
             "all2014": kumulacja2014,
             "all2013": kumulacja2013,
             "all2012": kumulacja2012,
+            "zyskN":zysk_netto,
             "allLabels": label2
 
         }

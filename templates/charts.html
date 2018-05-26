@@ -10,6 +10,7 @@
         var wszytko2012 = []
         var labels = []
         var wszystko2 = []
+        var zyskN = []
         $.ajax({
             method: "GET",
             url: endpoint,
@@ -21,6 +22,7 @@
                 wszytko2013 = data.all2013
                 wszytko2012 = data.all2012
                 wszytko2 = data.allLabels
+                zyskN = data.zyskN
                 setChart()
 
             },
@@ -34,9 +36,7 @@
             var ctx = document.getElementById("myChart");
             var ctx2 = document.getElementById("myChart2");
             var ctx3 = document.getElementById("myDoughnutChart");
-            var ctx2014 = document.getElementById("myDoughnutChart2014");
-            var ctx2013 = document.getElementById("myDoughnutChart2013");
-            var ctx2012 = document.getElementById("myDoughnutChart2012");
+
             var myChart = new Chart(ctx2, {
                 type: 'line',
                 data: {
@@ -73,13 +73,13 @@
                     }
                 }
             })
-            var myChart = new Chart(ctx, {
+            var myChart2 = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Przychody',
-                        data: defaultData,
+                        label: 'Zysk netto',
+                        data: zyskN,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
