@@ -2,7 +2,7 @@ import numpy as np
 from .models import Dane
 from .forms import DataForm
 from django.shortcuts import render, redirect
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 from scipy import special, optimize
 import matplotlib.pyplot as plt
@@ -15,18 +15,7 @@ def list_datas(request):
 
 
 
-def mplimage(request):
-    fig = Figure()
-    canvas = FigureCanvas(fig)
-    buf = io.BytesIO()
-    ax = fig.add_subplot(111)
-    x = np.arange(-2,1.5,.01)
-    y = np.sin(np.exp(2*x))
-    ax.plot(x, y)
-    plt.savefig(buf, format='png')
-    plt.close(fig)
-    response=django.http.HttpResponse(buf.getvalue(),content_type='image/png')
-    return response
+
 
 def create_datas(request):
     form = DataForm(request.POST or None)

@@ -7,7 +7,7 @@ from django.db.models.functions import Length
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.backends.backend_agg import FigureCanvasAgg
 from scipy import special, optimize
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,8 +15,10 @@ import django
 import random
 import argparse
 from polls.models import Dane
-
+import  io
 User = get_user_model()
+
+# len = Dane.objects.all().count()
 
 
 def hello_world(requset):
@@ -33,7 +35,24 @@ def dodanie_danych(request):
 def years(request):
     return render(request, 'yers.html')
 
+def mplimage(request):
+    fig = Figure()
+    canvas = FigureCanvasAgg(fig)
+    buf = io.BytesIO()
+    f = lambda x: -special.jv(3, x)
+    sol = optimize.minimize(f, 1.0)
+    zysk_brutto1 = [Dane.objects.all()[0].zysk_brutto, Dane.objects.all()[1].zysk_brutto,
+                     Dane.objects.all()[2].zysk_brutto, Dane.objects.all()[3].zysk_brutto,
+                     Dane.objects.all()[4].zysk_brutto]
 
+    # Plot
+    x = np.linspace(0, 10, 5000)
+    plt.plot(zysk_brutto1)
+
+    plt.savefig(buf, format='png')
+    plt.close(fig)
+    response=django.http.HttpResponse(buf.getvalue(),content_type='image/png')
+    return response
 
 def random_number(request, max_rand=100):
     random_num = random.randrange(0, int(max_rand))
