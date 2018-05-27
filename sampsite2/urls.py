@@ -20,6 +20,7 @@ from django.urls import path
 from sampsite2.view import hello_world, root_page, random_number
 
 from .view import HomeView, get_data, ChartData, dodanie_danych, years
+import polls.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     # url(r'^$',root_page),
     url(r'^random/(\d+)/$', random_number),
     path('polls2', years, name='years'),
+    url(r'mplimage.png', polls.views.mplimage),
     path('polls', dodanie_danych, name='dodanie_danych'),
     url(r'^polls/', include('polls.urls')),
     url(r'^$', HomeView.as_view(), name='home'),

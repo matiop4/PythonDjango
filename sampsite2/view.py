@@ -6,9 +6,14 @@ from django.views.generic import View
 from django.db.models.functions import Length
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from scipy import special, optimize
+import matplotlib.pyplot as plt
+import numpy as np
+import django
 import random
-
+import argparse
 from polls.models import Dane
 
 User = get_user_model()
@@ -27,6 +32,8 @@ def dodanie_danych(request):
 
 def years(request):
     return render(request, 'yers.html')
+
+
 
 def random_number(request, max_rand=100):
     random_num = random.randrange(0, int(max_rand))
