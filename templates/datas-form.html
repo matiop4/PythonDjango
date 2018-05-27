@@ -17,7 +17,7 @@
                 <li><a href="{% url 'home' %}">Strona startowa</a></li>
                 <li><a href="{% url 'home' %}#services">Wykresy</a></li>
                 <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
-
+                <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
             </ul>
         </nav>
 
@@ -32,12 +32,12 @@
     <section id="services">
 
         <h1>Dodawanie danych</h1>
-        <form method="POST">
+        <form method="POST" >
             {% csrf_token %}
             {{ form }}
             <br>
             <br>
-            <button type="submit">Zapisz</button>
+            <button type="submit">Edytuj</button>
         </form>
         <br>
         <p>
@@ -60,6 +60,7 @@
             <li><a href="{% url 'home' %}">Strona startowa</a></li>
             <li><a href="{% url 'home' %}#services">Wykresy</a></li>
             <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+            <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
         </ul>
 
     </div>
