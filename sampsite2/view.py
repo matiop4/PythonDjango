@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import View
-
+from django.db.models.functions import Length
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -55,15 +55,27 @@ class ChartData(APIView):
         # qs_count = User.objects.all().count()
         dane1 = Dane.objects.all()
         print(dane1)
-        lata = [Dane.objects.all()[0].rok, Dane.objects.all()[1].rok, Dane.objects.all()[2].rok, Dane.objects.all()[3].rok]
-        przychody = [Dane.objects.all()[0].przychody, Dane.objects.all()[1].przychody, Dane.objects.all()[2].przychody, Dane.objects.all()[3].przychody]
-        zysk_netto = [Dane.objects.all()[0].zysk_netto, Dane.objects.all()[1].zysk_netto, Dane.objects.all()[2].zysk_netto, Dane.objects.all()[3].zysk_netto]
+        lata = []
+        przychody = []
+        zysk_netto = []
+        print()
+        zysk_brutto1  = []
+        len = Dane.objects.all().count()
+        i = 0
+        while i < len:
+            zysk_brutto1.append(Dane.objects.all()[i].zysk_brutto),
+            zysk_netto.append(Dane.objects.all()[i].zysk_netto),
+            przychody.append(Dane.objects.all()[i].przychody),
+            lata.append(Dane.objects.all()[i].rok),
+            i +=1
+
         kumulacja2015 = [Dane.objects.all()[3].przychody,Dane.objects.all()[3].zysk_brutto,Dane.objects.all()[3].dzialalnosc_finansowa,Dane.objects.all()[3].zysk_netto,Dane.objects.all()[3].dzialalnosc_operacyjna]
         kumulacja2014 = [Dane.objects.all()[2].przychody,Dane.objects.all()[2].zysk_brutto,Dane.objects.all()[2].dzialalnosc_finansowa,Dane.objects.all()[2].zysk_netto,Dane.objects.all()[2].dzialalnosc_operacyjna]
         kumulacja2013 = [Dane.objects.all()[1].przychody,Dane.objects.all()[1].zysk_brutto,Dane.objects.all()[1].dzialalnosc_finansowa,Dane.objects.all()[1].zysk_netto,Dane.objects.all()[1].dzialalnosc_operacyjna]
         kumulacja2012 = [Dane.objects.all()[0].przychody,Dane.objects.all()[0].zysk_brutto,Dane.objects.all()[0].dzialalnosc_finansowa,Dane.objects.all()[0].zysk_netto,Dane.objects.all()[0].dzialalnosc_operacyjna]
         # zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
         label2 = ["przychody","zysk brutto","działalność finansowa","zysk netto","dziłalność operacyjna"]
+
         data = {
             "labels": lata,
             "default": przychody,
@@ -72,6 +84,7 @@ class ChartData(APIView):
             "all2013": kumulacja2013,
             "all2012": kumulacja2012,
             "zyskN":zysk_netto,
+            "zyskB":zysk_brutto1,
             "allLabels": label2
 
         }
