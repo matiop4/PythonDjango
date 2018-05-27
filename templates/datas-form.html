@@ -32,9 +32,11 @@
     <section id="services">
 
         <h1>Dodawanie danych</h1>
-        <form method="POST" >
-            {% csrf_token %}
-            {{ form }}
+        <form method="POST">
+            <table>
+                {% csrf_token %}
+                {{ form.as_table }}
+            </table>
             <br>
             <br>
             <button type="submit">Edytuj</button>
