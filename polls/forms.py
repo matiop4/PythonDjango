@@ -5,4 +5,4 @@ from .models import Dane
 class DataForm(forms.ModelForm):
     class Meta:
         model = Dane
-        fields = {'rok', 'przychody', 'zysk_brutto', 'dzialalnosc_operacyjna', 'dzialalnosc_finansowa', 'zysk_netto'}
+        fields = {'rok',  'przychody', 'zysk_brutto', 'dzialalnosc_operacyjna', 'dzialalnosc_finansowa', 'zysk_netto'}

@@ -94,7 +94,7 @@
                     }
                 }
             )
-    var myDoughnutChart2013 = new Chart(ctx2013, {
+            var myDoughnutChart2013 = new Chart(ctx2013, {
                     type: 'doughnut',
 
                     data: {
@@ -123,7 +123,7 @@
                     }
                 }
             )
-    var myDoughnutChart2012 = new Chart(ctx2012, {
+            var myDoughnutChart2012 = new Chart(ctx2012, {
                     type: 'doughnut',
 
                     data: {
@@ -166,10 +166,9 @@
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Strona startowa</a></li>
-                    <li><a href="#services">Wykresy</a></li>
+                    <li><a href="{% url 'home' %}#services">Wykresy</a></li>
                     <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
                     <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
-
                 </ul>
             </nav>
 
@@ -184,29 +183,48 @@
         <section id="services">
 
             <h1>Wykresy</h1>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <div class='col-sm-6'>
+                        <h2>2015</h2>
+                        <canvas id="myDoughnutChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class='col-sm-6'>
+                        <h2>2014</h2>
+                        <canvas id="myDoughnutChart2014" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <div class='col-sm-6'>
+                        <h2>2013</h2>
+                        <canvas id="myDoughnutChart2013" width="400" height="400"></canvas>
+                    </div>
+                    <div class='col-sm-6'>
+                        <h2>2012</h2>
+                        <canvas id="myDoughnutChart2012" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
 
-            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
-                2015
-                <canvas id="myDoughnutChart" width="400" height="400"></canvas>
-            </div>
-            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
-                2014
-                <canvas id="myDoughnutChart2014" width="400" height="400"></canvas>
-            </div>
-            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
-                2013
-                <canvas id="myDoughnutChart2013" width="400" height="400"></canvas>
-            </div>
-            <div class='col-sm-6' style="margin-top: 200px; margin-bottom: 50px">
-                2012
-                <canvas id="myDoughnutChart2012" width="400" height="400"></canvas>
-            </div>
 
         </section>
 
-
     </div>
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-menu">
+                <li><a href="{% url 'home' %}">Strona startowa</a></li>
+                <li><a href="{% url 'home' %}#services">Wykresy</a></li>
+                <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+                <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
+            </ul>
 
+        </div>
+
+    </footer>
 
 
 

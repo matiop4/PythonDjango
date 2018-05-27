@@ -200,7 +200,7 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="#main">Strona startowa</a></li>
+                    <li><a href="{% url 'home' %}">Strona startowa</a></li>
                     <li><a href="{% url 'home' %}#services">Wykresy</a></li>
                     <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
                     <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
@@ -219,42 +219,41 @@
 
             <h1>Witaj!</h1>
 
-            <p class="intro">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum."</p>
+            <p class="intro">
+                Celem naszego projektu było zaprojektowanie i zaimplementowanie aplikacji webowej do zbierania i analizowania informacji marketingowych
+                na zadany temat. Wynikiem naszej pracy jest własnie ta oto strona, która pozwala na analizę danych marketingowych przykładowej firmy.
+
+            </p>
 
 
             <div class="row no-bottom-margin">
 
                 <section class="col">
-                    <h2>Creative Ideas</h2>
+                    <h2>System informacji marketingowych</h2>
 
-                    <p>Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
-                        acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
-                        cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
+                    <p>Sformalizowany i powiązany wewnętrznie zespół osób, urządzeń oraz procedur stworzonych w celu
+                        zapewnienia uporządkowanego dopływu trafnych informacji ze źródeł wewnętrznych i zewnętrznych na
+                        potrzeby podejmowania decyzji marketingowych. To metoda ciągłego planowania, zbierania i przechowywania
+                        oraz analizy danych.</p>
                 </section>
                 <section class="col mid">
-                    <h2>Innovation</h2>
+                    <h2>Firma Amica S.A.</h2>
 
-                    <p>Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
-                        Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
-                        gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
-                        Phasellus vulputate.</p>
+                    <p>Polskie przedsiębiorstwo przemysłu elektromaszynowego z siedzibą we Wronkach,
+                        produkujące sprzęt AGD, od 1997 r. Amica jest notowana na Giełdzie Papierów Wartościowych w
+                        Warszawie.Marka Amica należy do najbardziej rozpoznawalnych marek na rynku polskim. Pomimo rosnącej
+                        konkurencji z zagranicy Amica pozostaje liderem na rodzimym rynku z udziałami kształtującymi się na poziomie 18 procent.</p>
                 </section>
 
                 <section class="col">
-                    <h2>Design and Development</h2>
+                    <h2>Analiza marketingowa</h2>
 
-                    <p>In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
-                        Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Sed commodo ligula blandit risus.</p>
+                    <p>Polega na ocenie zintensyfikowania działań marketingowych oraz na poszukiwaniu lepszego wzbogacenia danej firmy poprzez
+                        posiadanie odpowiednich i niezbędnych informacji o określonym rynku, znalezienie miejsca firmy w tym otoczeniu oraz
+                        zwiększenie sprzedaży na tym rynku a co za tym idzie zwiększenie potencjału firmowego. </p>
                 </section>
             </div>
 
-            <a class="back-to-top" href="#main">Back</a>
 
         </section>
 
@@ -262,6 +261,7 @@
         <section id="services">
 
             <h1>Wykresy</h1>
+            <p>Przykładowe wykresy przedstawiające zysk netto oraz przychody firmy Amica S.A. w przeciągu czterech lat od 2012 do 2015 roku.</p>
             <div class='row'>
                 <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
                     <div class='col-sm-6'>
@@ -273,16 +273,30 @@
 
                 </div>
             </div>
+<<<<<<< HEAD
     <div class='col-sm-6'>
                         <canvas id="myChart3" width="400" height="400"></canvas>
                     </div>
 
+=======
+            <a class="back-to-top" href="#main">Back</a>
+>>>>>>> 617b91d32ac1b8f7810fb69d25e8bfb83073190d
 
         </section>
-
-
     </div>
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-menu">
+                <li><a href="{% url 'home' %}">Strona startowa</a></li>
+                <li><a href="{% url 'home' %}#services">Wykresy</a></li>
+                <li><a href="{% url 'dodanie_danych' %}">Dodaj dane</a></li>
+                <li><a href="{% url 'years' %}">Poszczególne lata</a></li>
+            </ul>
 
+        </div>
+
+    </footer>
 
 
 
