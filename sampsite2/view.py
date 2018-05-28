@@ -86,12 +86,14 @@ class ChartData(APIView):
         zysk_netto = []
         print()
         zysk_brutto1  = []
+        dzialalnosc_finansowa =[]
         len = Dane.objects.all().count()
         i = 0
         while i < len:
             zysk_brutto1.append(Dane.objects.all()[i].zysk_brutto),
             zysk_netto.append(Dane.objects.all()[i].zysk_netto),
             przychody.append(Dane.objects.all()[i].przychody),
+            dzialalnosc_finansowa.append(Dane.objects.all()[i].dzialalnosc_finansowa),
             lata.append(Dane.objects.all()[i].rok),
             i +=1
 
@@ -111,6 +113,7 @@ class ChartData(APIView):
             "all2012": kumulacja2012,
             "zyskN":zysk_netto,
             "zyskB":zysk_brutto1,
+            "dzFinansowa": dzialalnosc_finansowa,
             "allLabels": label2
 
         }

@@ -12,6 +12,7 @@
         var wszystko2 = []
         var zyskN = []
         var zyskB = []
+        var dzFinansowa = []
         $.ajax({
             method: "GET",
             url: endpoint,
@@ -25,6 +26,7 @@
                 wszytko2 = data.allLabels
                 zyskN = data.zyskN
                 zyskB = data.zyskB
+                dzFinansowa = data.dzFinansowa
                 setChart()
 
             },
@@ -38,6 +40,7 @@
             var ctx = document.getElementById("myChart");
             var ctx2 = document.getElementById("myChart2");
             var ctx3 = document.getElementById("myChart3");
+            var ctx4 = document.getElementById("myChart4");
 
             var myChart = new Chart(ctx, {
                 type: 'line',
@@ -118,6 +121,42 @@
                     datasets: [{
                         label: 'Zysk brutto',
                         data: zyskB,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            var myChart4 = new Chart(ctx4, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Działalność finansowa',
+                        data: dzFinansowa,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -274,10 +313,14 @@
                 </div>
             </div>
             <div class='row'>
-                <div class='col-sm-6'>
-                    <canvas id="myChart3" width="400" height="400"></canvas>
+                <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
+                    <div class='col-sm-6'>
+                        <canvas id="myChart3" width="400" height="400"></canvas>
+                    </div>
+                    <div class='col-sm-6'>
+                        <canvas id="myChart4" width="400" height="400"></canvas>
+                    </div>
                 </div>
-
             </div>
             <a class="back-to-top" href="#main">Back</a>
 
