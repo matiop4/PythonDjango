@@ -97,6 +97,9 @@ class ChartData(APIView):
 
         dzialalnosc_finansowa =[]
 
+        avg = 0
+        dzialalnosc_finansowa =[]
+
         len = Dane.objects.all().count()
         i = 0
         while i < len:
@@ -131,6 +134,7 @@ class ChartData(APIView):
             "all2012": kumulacja2012,
             "zyskN":zysk_netto,
             "zyskB":zysk_brutto1,
+            "dzFinansowa": dzialalnosc_finansowa,
             "allLabels": label2,
             "avgPrzy" : avg1,
             "avgZyskB" : avg3,
