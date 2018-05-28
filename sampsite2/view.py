@@ -90,13 +90,18 @@ class ChartData(APIView):
         zysk_netto = []
         print()
         zysk_brutto1  = []
+<<<<<<< HEAD
         avg = 0
+=======
+        dzialalnosc_finansowa =[]
+>>>>>>> 5affe5afce436cf5d92d65102f9209e1f38dc5c4
         len = Dane.objects.all().count()
         i = 0
         while i < len:
             zysk_brutto1.append(Dane.objects.all()[i].zysk_brutto),
             zysk_netto.append(Dane.objects.all()[i].zysk_netto),
             przychody.append(Dane.objects.all()[i].przychody),
+            dzialalnosc_finansowa.append(Dane.objects.all()[i].dzialalnosc_finansowa),
             lata.append(Dane.objects.all()[i].rok),
             i +=1
 
