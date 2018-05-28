@@ -46,9 +46,13 @@ def mplimage(request):
                      Dane.objects.all()[4].zysk_brutto]
 
     # Plot
-    x = np.linspace(0, 10, 5000)
-    plt.plot(zysk_brutto1)
 
+    x = np.linspace(0, 1, 5)
+    t = np.arange(0., 1., 0.2)
+    # sorted(zysk_brutto1)
+    # plt.axis([2000,2100])
+    newdata = np.squeeze(zysk_brutto1)
+    plt.plot(np.array( zysk_brutto1),'o')
     plt.savefig(buf, format='png')
     plt.close(fig)
     response=django.http.HttpResponse(buf.getvalue(),content_type='image/png')
@@ -86,6 +90,7 @@ class ChartData(APIView):
         zysk_netto = []
         print()
         zysk_brutto1  = []
+        avg = 0
         len = Dane.objects.all().count()
         i = 0
         while i < len:
@@ -101,7 +106,9 @@ class ChartData(APIView):
         kumulacja2012 = [Dane.objects.all()[0].przychody,Dane.objects.all()[0].zysk_brutto,Dane.objects.all()[0].dzialalnosc_finansowa,Dane.objects.all()[0].zysk_netto,Dane.objects.all()[0].dzialalnosc_operacyjna]
         # zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
         label2 = ["przychody","zysk brutto","działalność finansowa","zysk netto","dziłalność operacyjna"]
-
+        przychody1 = np.asarray(przychody)
+        przychody1 = list(map(int, przychody1))
+        avg1 = np.average(przychody1)
         data = {
             "labels": lata,
             "default": przychody,
@@ -111,7 +118,8 @@ class ChartData(APIView):
             "all2012": kumulacja2012,
             "zyskN":zysk_netto,
             "zyskB":zysk_brutto1,
-            "allLabels": label2
+            "allLabels": label2,
+            "avgPrzy" : avg1
 
         }
         return Response(data)

@@ -12,6 +12,7 @@
         var wszystko2 = []
         var zyskN = []
         var zyskB = []
+        var sredniePrzy = 0
         $.ajax({
             method: "GET",
             url: endpoint,
@@ -25,6 +26,7 @@
                 wszytko2 = data.allLabels
                 zyskN = data.zyskN
                 zyskB = data.zyskB
+                sredniePrzy = data.avgPrzy
                 setChart()
 
             },
@@ -44,7 +46,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Przychody',
+                        label: ['przychody','    średnie pzychody: ', sredniePrzy],
                         data: defaultData,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -66,6 +68,7 @@
                     }]
                 },
                 options: {
+
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -118,6 +121,7 @@
                     datasets: [{
                         label: 'Zysk brutto',
                         data: zyskB,
+
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -220,8 +224,10 @@
             <h1>Witaj!</h1>
 
             <p class="intro">
-                Celem naszego projektu było zaprojektowanie i zaimplementowanie aplikacji webowej do zbierania i analizowania informacji marketingowych
-                na zadany temat. Wynikiem naszej pracy jest własnie ta oto strona, która pozwala na analizę danych marketingowych przykładowej firmy.
+                Celem naszego projektu było zaprojektowanie i zaimplementowanie aplikacji webowej do zbierania i
+                analizowania informacji marketingowych
+                na zadany temat. Wynikiem naszej pracy jest własnie ta oto strona, która pozwala na analizę danych
+                marketingowych przykładowej firmy.
 
             </p>
 
@@ -233,7 +239,8 @@
 
                     <p>Sformalizowany i powiązany wewnętrznie zespół osób, urządzeń oraz procedur stworzonych w celu
                         zapewnienia uporządkowanego dopływu trafnych informacji ze źródeł wewnętrznych i zewnętrznych na
-                        potrzeby podejmowania decyzji marketingowych. To metoda ciągłego planowania, zbierania i przechowywania
+                        potrzeby podejmowania decyzji marketingowych. To metoda ciągłego planowania, zbierania i
+                        przechowywania
                         oraz analizy danych.</p>
                 </section>
                 <section class="col mid">
@@ -241,15 +248,19 @@
 
                     <p>Polskie przedsiębiorstwo przemysłu elektromaszynowego z siedzibą we Wronkach,
                         produkujące sprzęt AGD, od 1997 r. Amica jest notowana na Giełdzie Papierów Wartościowych w
-                        Warszawie.Marka Amica należy do najbardziej rozpoznawalnych marek na rynku polskim. Pomimo rosnącej
-                        konkurencji z zagranicy Amica pozostaje liderem na rodzimym rynku z udziałami kształtującymi się na poziomie 18 procent.</p>
+                        Warszawie.Marka Amica należy do najbardziej rozpoznawalnych marek na rynku polskim. Pomimo
+                        rosnącej
+                        konkurencji z zagranicy Amica pozostaje liderem na rodzimym rynku z udziałami kształtującymi się
+                        na poziomie 18 procent.</p>
                 </section>
 
                 <section class="col">
                     <h2>Analiza marketingowa</h2>
 
-                    <p>Polega na ocenie zintensyfikowania działań marketingowych oraz na poszukiwaniu lepszego wzbogacenia danej firmy poprzez
-                        posiadanie odpowiednich i niezbędnych informacji o określonym rynku, znalezienie miejsca firmy w tym otoczeniu oraz
+                    <p>Polega na ocenie zintensyfikowania działań marketingowych oraz na poszukiwaniu lepszego
+                        wzbogacenia danej firmy poprzez
+                        posiadanie odpowiednich i niezbędnych informacji o określonym rynku, znalezienie miejsca firmy w
+                        tym otoczeniu oraz
                         zwiększenie sprzedaży na tym rynku a co za tym idzie zwiększenie potencjału firmowego. </p>
                 </section>
             </div>
@@ -261,10 +272,12 @@
         <section id="services">
 
             <h1>Wykresy</h1>
-            <p>Przykładowe wykresy przedstawiające zysk netto oraz przychody firmy Amica S.A. w przeciągu czterech lat od 2012 do 2015 roku.</p>
+            <p>Przykładowe wykresy przedstawiające zysk netto oraz przychody firmy Amica S.A. w przeciągu czterech lat
+                od 2012 do 2015 roku.</p>
             <div class='row'>
                 <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
                     <div class='col-sm-6'>
+
                         <canvas id="myChart" width="400" height="400"></canvas>
                     </div>
                     <div class='col-sm-6'>
