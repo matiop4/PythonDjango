@@ -13,6 +13,8 @@
         var zyskN = []
         var zyskB = []
         var sredniePrzy = 0
+        var srednieN = 0
+        var srednieB = 0
         $.ajax({
             method: "GET",
             url: endpoint,
@@ -27,6 +29,8 @@
                 zyskN = data.zyskN
                 zyskB = data.zyskB
                 sredniePrzy = data.avgPrzy
+                srednieN = data.avgZyskN
+                srednieB = data.avgZyskB
                 setChart()
 
             },
@@ -84,7 +88,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Zysk netto',
+                        label: ['Zysk netto','  średni zysk netto', srednieN],
                         data: zyskN,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -120,7 +124,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Zysk brutto',
+                        label: ['Zysk brutto',' sredni zysk brutto: ',srednieB],
                         data: zyskB,
 
                         backgroundColor: [
