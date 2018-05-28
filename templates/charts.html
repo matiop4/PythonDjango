@@ -12,7 +12,7 @@
         var wszystko2 = []
         var zyskN = []
         var zyskB = []
-        var dzFinansowa =[]
+        var dzFinansowa = []
         var sredniePrzy = 0
         var srednieN = 0
         var srednieB = 0
@@ -53,7 +53,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: ['przychody','    średnie pzychody: ', sredniePrzy],
+                        label: ['przychody', '    średnie pzychody: ', sredniePrzy],
                         data: defaultData,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -90,7 +90,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: ['Zysk netto','  średni zysk netto', srednieN],
+                        label: ['Zysk netto', '  średni zysk netto', srednieN],
                         data: zyskN,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
@@ -126,7 +126,7 @@
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: ['Zysk brutto',' sredni zysk brutto: ',srednieB],
+                        label: ['Zysk brutto', ' sredni zysk brutto: ', srednieB],
                         data: zyskB,
 
                         backgroundColor: [
@@ -340,7 +340,9 @@
                 </div>
             </div>
             <a class="back-to-top" href="#main">Back</a>
-
+            <button>
+            <a href="{% url 'mplimage' %}">Stworz wykres</a>
+            </button>
 
         </section>
     </div>

@@ -15,8 +15,10 @@ import django
 import random
 import argparse
 from polls.models import Dane
-import  io
+import io
+
 User = get_user_model()
+
 
 # len = Dane.objects.all().count()
 
@@ -32,8 +34,10 @@ def root_page(request):
 def dodanie_danych(request):
     return render(request, 'datas.html')
 
+
 def years(request):
     return render(request, 'yers.html')
+
 
 def mplimage(request):
     fig = Figure()
@@ -42,8 +46,8 @@ def mplimage(request):
     f = lambda x: -special.jv(3, x)
     sol = optimize.minimize(f, 1.0)
     zysk_brutto1 = [Dane.objects.all()[0].zysk_brutto, Dane.objects.all()[1].zysk_brutto,
-                     Dane.objects.all()[2].zysk_brutto, Dane.objects.all()[3].zysk_brutto,
-                     Dane.objects.all()[4].zysk_brutto]
+                    Dane.objects.all()[2].zysk_brutto, Dane.objects.all()[3].zysk_brutto,
+                    Dane.objects.all()[4].zysk_brutto]
 
     # Plot
     zysk_brutto2 = np.asarray(zysk_brutto1)
@@ -54,11 +58,13 @@ def mplimage(request):
     # sorted(zysk_brutto1)
     # plt.axis([2000,2100])
     newdata = np.squeeze(zysk_brutto1)
-    plt.plot( [2012,2013,2014,2015,2016],zysk_brutto2,'o')
+    plt.plot([2012, 2013, 2014, 2015, 2016], zysk_brutto2, 'o')
     plt.savefig(buf, format='png')
     plt.close(fig)
-    response=django.http.HttpResponse(buf.getvalue(),content_type='image/png')
+    response = django.http.HttpResponse(buf.getvalue(), content_type='image/png')
     return response
+    #return render(request, 'example.html')
+
 
 def random_number(request, max_rand=100):
     random_num = random.randrange(0, int(max_rand))
@@ -91,14 +97,14 @@ class ChartData(APIView):
         przychody = []
         zysk_netto = []
         print()
-        zysk_brutto1  = []
+        zysk_brutto1 = []
 
         avg = 0
 
-        dzialalnosc_finansowa =[]
+        dzialalnosc_finansowa = []
 
         avg = 0
-        dzialalnosc_finansowa =[]
+        dzialalnosc_finansowa = []
 
         len = Dane.objects.all().count()
         i = 0
@@ -108,20 +114,24 @@ class ChartData(APIView):
             przychody.append(Dane.objects.all()[i].przychody),
             dzialalnosc_finansowa.append(Dane.objects.all()[i].dzialalnosc_finansowa),
             lata.append(Dane.objects.all()[i].rok),
-            i +=1
+            i += 1
 
-        kumulacja2015 = [Dane.objects.all()[3].przychody,Dane.objects.all()[3].zysk_brutto,Dane.objects.all()[3].dzialalnosc_finansowa,Dane.objects.all()[3].zysk_netto,Dane.objects.all()[3].dzialalnosc_operacyjna]
-        kumulacja2014 = [Dane.objects.all()[2].przychody,Dane.objects.all()[2].zysk_brutto,Dane.objects.all()[2].dzialalnosc_finansowa,Dane.objects.all()[2].zysk_netto,Dane.objects.all()[2].dzialalnosc_operacyjna]
-        kumulacja2013 = [Dane.objects.all()[1].przychody,Dane.objects.all()[1].zysk_brutto,Dane.objects.all()[1].dzialalnosc_finansowa,Dane.objects.all()[1].zysk_netto,Dane.objects.all()[1].dzialalnosc_operacyjna]
-        kumulacja2012 = [Dane.objects.all()[0].przychody,Dane.objects.all()[0].zysk_brutto,Dane.objects.all()[0].dzialalnosc_finansowa,Dane.objects.all()[0].zysk_netto,Dane.objects.all()[0].dzialalnosc_operacyjna]
+        kumulacja2015 = [Dane.objects.all()[3].przychody, Dane.objects.all()[3].zysk_brutto, Dane.objects.all()[3].dzialalnosc_finansowa, Dane.objects.all()[3].zysk_netto,
+                         Dane.objects.all()[3].dzialalnosc_operacyjna]
+        kumulacja2014 = [Dane.objects.all()[2].przychody, Dane.objects.all()[2].zysk_brutto, Dane.objects.all()[2].dzialalnosc_finansowa, Dane.objects.all()[2].zysk_netto,
+                         Dane.objects.all()[2].dzialalnosc_operacyjna]
+        kumulacja2013 = [Dane.objects.all()[1].przychody, Dane.objects.all()[1].zysk_brutto, Dane.objects.all()[1].dzialalnosc_finansowa, Dane.objects.all()[1].zysk_netto,
+                         Dane.objects.all()[1].dzialalnosc_operacyjna]
+        kumulacja2012 = [Dane.objects.all()[0].przychody, Dane.objects.all()[0].zysk_brutto, Dane.objects.all()[0].dzialalnosc_finansowa, Dane.objects.all()[0].zysk_netto,
+                         Dane.objects.all()[0].dzialalnosc_operacyjna]
         # zysk_brutto = Dane.objects.all()[:1].get().zysk_brutto
-        label2 = ["przychody","zysk brutto","działalność finansowa","zysk netto","dziłalność operacyjna"]
+        label2 = ["przychody", "zysk brutto", "działalność finansowa", "zysk netto", "dziłalność operacyjna"]
         przychody1 = np.asarray(przychody)
         zysk_netto2 = np.asarray(zysk_netto)
         zysk_brutto2 = np.asarray(zysk_brutto1)
         przychody1 = list(map(int, przychody1))
         zysk_netto2 = list(map(int, zysk_netto2))
-        zysk_brutto2= list(map(int, zysk_brutto2))
+        zysk_brutto2 = list(map(int, zysk_brutto2))
         avg1 = np.average(przychody1)
         avg2 = np.average(zysk_netto2)
         avg3 = np.average(zysk_brutto2)
@@ -132,13 +142,13 @@ class ChartData(APIView):
             "all2014": kumulacja2014,
             "all2013": kumulacja2013,
             "all2012": kumulacja2012,
-            "zyskN":zysk_netto,
-            "zyskB":zysk_brutto1,
+            "zyskN": zysk_netto,
+            "zyskB": zysk_brutto1,
             "dzFinansowa": dzialalnosc_finansowa,
             "allLabels": label2,
-            "avgPrzy" : avg1,
-            "avgZyskB" : avg3,
-            "avgZyskN" : avg2,
+            "avgPrzy": avg1,
+            "avgZyskB": avg3,
+            "avgZyskN": avg2,
             "przychodyplot": przychody1
 
         }
