@@ -12,6 +12,7 @@
         var wszystko2 = []
         var zyskN = []
         var zyskB = []
+        var dzFinansowa =[]
         var sredniePrzy = 0
         $.ajax({
             method: "GET",
@@ -26,6 +27,7 @@
                 wszytko2 = data.allLabels
                 zyskN = data.zyskN
                 zyskB = data.zyskB
+                dzFinansowa = data.dzFinansowa
                 sredniePrzy = data.avgPrzy
                 setChart()
 
