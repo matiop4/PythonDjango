@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Django Highcharts Example</title>
+</head>
+<body>
+<center>
+  <style>
+  .chartdiv {
+  width: 800px;
+  height: 550px;
+}
+
+.chartdiv1 {
+  width: 1000px;
+  height: 450px;
+}
+
+
+.myButton {
+	-moz-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	-webkit-box-shadow: 0px 1px 0px 0px #f0f7fa;
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #33bdef), color-stop(1, #019ad2));
+	background:-moz-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-webkit-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-o-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:-ms-linear-gradient(top, #33bdef 5%, #019ad2 100%);
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#33bdef', endColorstr='#019ad2',GradientType=0);
+	background-color:#33bdef;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:13px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:8px 76px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #019ad2), color-stop(1, #33bdef));
+	background:-moz-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-webkit-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-o-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:-ms-linear-gradient(top, #019ad2 5%, #33bdef 100%);
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#019ad2', endColorstr='#33bdef',GradientType=0);
+	background-color:#019ad2;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+h1 {
+font-family:Arial;
+font-weight:bold;
+
+}
+
+
+
+</style>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/pie.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.js"></script>
+    <script type="text/javascript">
+
+/**
+ * Second chart
+ */
+
+AmCharts.makeChart( "chart2", {
+  "titles": [ {"text": "Zysk firmy AMICA z lat 2012 - 2016" }],
+  "hideCredits":true,
+  "type": "serial",
+  "addClassNames": true,
+  "theme": "light",
+  "autoMargins": false,
+  "marginLeft": 50,
+  "marginRight": 8,
+  "marginTop": 10,
+  "marginBottom": 50,
+  "balloon": {
+    "adjustBorderColor": false,
+    "horizontalPadding": 10,
+    "verticalPadding": 8,
+    "color": "#ffffff"
+  },
+
+ "legend": {
+    "useGraphSettings": true
+  },
+
+  "dataProvider": [ {
+    "year": 2012,
+    "income": 123,
+    "expenses": 231
+  }, {
+    "year": 2013,
+    "income": 545,
+    "expenses": 231
+  }, {
+    "year": 2014,
+    "income": 254,
+    "expenses": 231
+  }, {
+    "year": 2015,
+    "income": 123,
+    "expenses": 231
+  }, {
+    "year": 2016,
+    "income": 111,
+    "expenses": 231,
+  } ],
+  "valueAxes": [ {
+    "gridColor": "#FFFFFF",
+    "gridAlpha": 0.2,
+    "dashLength": 0
+  } ],
+  "startDuration": 1,
+  "graphs": [ {
+    "alphaField": "alpha",
+    "balloonText": "<span style='font-size:12px;'>W roku [[category]]:<br><span style='font-size:20px;'>[[value]] tyś zł.</span> [[additional]]</span>",
+    "fillAlphas": 1,
+    "title": "Zysk w danym roku [tyś zł.]",
+    "type": "column",
+    "valueField": "income",
+    "dashLengthField": "dashLengthColumn"
+  }, {
+    "id": "graph2",
+    "balloonText": "<span style='font-size:12px;'>Średnia z wszystkich lat:<br><span style='font-size:20px;'>[[value]] tyś zł.</span> [[additional]]</span>",
+    "bullet": "round",
+    "lineThickness": 3,
+    "bulletSize": 7,
+    "bulletBorderAlpha": 1,
+    "bulletColor": "#FFFFFF",
+    "useLineColorForBulletBorder": true,
+    "bulletBorderThickness": 3,
+    "fillAlphas": 0,
+    "lineAlpha": 1,
+    "title": "Średnia z wszystkich lat [tyś zł.]",
+    "valueField": "expenses"
+  } ],
+  "categoryField": "year",
+  "categoryAxis": {
+    "gridPosition": "start",
+    "gridAlpha": 0,
+    "tickPosition": "start",
+    "tickLength": 20
+  },
+  "export": {
+    "enabled": true,
+    "menu": []
+  }
+} );
+
+AmCharts.makeChart( "chart3", {
+  "hideCredits":true,
+  "type": "pie",
+  "theme": "light",
+  "dataProvider": [ {
+    "country": "Niemcy",
+    "value": 260
+  }, {
+    "country": "Wielka Brytania",
+    "value": 201
+  }, {
+    "country": "Skandynawia",
+    "value": 65
+  }, {
+    "country": "Australia",
+    "value": 57
+  }, {
+    "country": "Hiszpania",
+    "value": 33
+  }, {
+    "country": "Francja",
+    "value": 10
+  } ],
+  "valueField": "value",
+  "titleField": "country",
+  "outlineAlpha": 0.5,
+  "depth3D": 15,
+  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+  "angle": 35,
+  "titles": [ {"text": "Największy popyt na towar w następujących państwach" }],
+   "export": {
+    "enabled": true,
+    "menu": []
+  }
+} );
+
+
+
+
+function exportCharts() {
+  // iterate through all of the charts and prepare their images for export
+  var images = [];
+  var pending = AmCharts.charts.length;
+  for ( var i = 0; i < AmCharts.charts.length; i++ ) {
+    var chart = AmCharts.charts[ i ];
+    chart.export.capture( {}, function() {
+      this.toJPG( {
+        multiplier: 2
+      }, function( data ) {
+        images.push( {
+          "image": data,
+          "fit": [ 523.28, 769.89 ]
+        } );
+        pending--;
+        if ( pending === 0 ) {
+          // all done - construct PDF
+          chart.export.toPDF( {
+            content: images
+          }, function( data ) {
+            this.download( data, "application/pdf", "Amico_Zysk_12-15.pdf" );
+          } );
+        }
+      } );
+    } );
+  }
+}
+  </script>
+
+<input type="button" class="myButton" value="Stwórz plik PDF" onclick="exportCharts();" />
+</br>
+</body>
+</br></br></br>
+<div id="chart2" class="chartdiv"></div></br></br></br></br>
+<div id="chart3" class="chartdiv1"></div>
+</center>
+</html>

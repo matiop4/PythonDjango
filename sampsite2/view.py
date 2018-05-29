@@ -34,6 +34,8 @@ def root_page(request):
 def dodanie_danych(request):
     return render(request, 'datas.html')
 
+def pdf(request):
+    return render(request, 'PDF.html')
 
 def years(request):
     return render(request, 'yers.html')
